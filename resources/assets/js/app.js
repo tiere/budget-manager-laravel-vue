@@ -18,3 +18,7 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: 'body'
 });
+
+setTimeout(function () {
+  $('.alert').slideUp();
+}, 3000);
