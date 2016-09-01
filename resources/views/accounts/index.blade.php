@@ -14,6 +14,9 @@
             @forelse ($accounts as $account)
                 <tr>
                     <td>{{ $account->name }}</td>
+                    <td>
+                        {!! link_to_route('accounts.destroy', 'Delete', [$account->id], ['class' => 'btn btn-danger']) !!}
+                    </td>
                 </tr>
                 @empty
                     <tr>
