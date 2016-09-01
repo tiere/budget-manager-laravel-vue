@@ -40,7 +40,9 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Account::create($request->all());
+
+        return redirect()->route('accounts.index')->with('success', 'Account created successfully');
     }
 
     /**
