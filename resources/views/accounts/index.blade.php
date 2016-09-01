@@ -22,4 +22,6 @@
                 @endforelse
         </tbody>
     </table>
+
+    {!! link_to_route('accounts.create', 'New accout', [], ['class' => 'btn btn-primary']) !!}
 @endsection
