@@ -23,5 +23,5 @@
         </tbody>
     </table>
 
-    {!! link_to_route('accounts.create', 'New accout', [], ['class' => 'btn btn-primary']) !!}
+    {!! link_to_route('accounts.create', 'New accout', [], ['class' => 'btn btn-primary', 'tabindex' => 1]) !!}
 @endsection
