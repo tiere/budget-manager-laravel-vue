@@ -15,7 +15,7 @@
 
         <div id="navbar-collapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-            <li><a href="">Accounts</a></li>
+            <li>{!! link_to_route('accounts.index', 'Accounts') !!}</li>
             </ul>
         </div>
     </div>
