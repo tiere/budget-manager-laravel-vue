@@ -12,6 +12,10 @@
     @include('shared.topbar')
 
     <div class="container-fluid">
+        @include('shared.flash')
+    </div>
+
+    <div class="container-fluid">
         @yield('content')
     </div>
 
