@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use App\Account;
 use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
@@ -15,7 +15,9 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view('accounts.index');
+        return view('accounts.index', [
+            'accounts' => Account::all(),
+        ]);
     }
 
     /**
