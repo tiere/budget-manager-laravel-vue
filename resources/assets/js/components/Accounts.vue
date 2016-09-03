@@ -41,16 +41,22 @@
             };
         },
         created () {
-            $.get('api/accounts').done(data => {
-                this.accounts = data;
-            });
+            this.fetchAccounts();
         },
         methods: {
             showNewForm () {
                 this.newAccount = {};
             },
             save () {
-                console.log(this.newAccount);
+                $.post('/api/accounts', this.newAccount).done(data => {
+                    this.newAccount = null;
+                    this.fetchAccounts();
+                });
+            },
+            fetchAccounts () {
+                $.get('api/accounts').done(data => {
+                    this.accounts = data;
+                });
             }
         }
     };
