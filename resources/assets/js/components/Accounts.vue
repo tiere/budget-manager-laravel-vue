@@ -1,35 +1,57 @@
 <template>
     <h1>Accounts</h1>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-            </tr>
-        </thead>
+    <div class="list-group">
+        <a href="#" class="list-group-item" v-for="account in accounts">
+            <div class="row">
+                <div class="col-sm-3">{{ account.name }}</div>
+                <div class="col-sm-6">Expenses accout</div>
+                <div class="col-sm-3">123 €</div>
+            </div>
+        </a>
 
-        <tbody>
-            <tr v-for="account in accounts">
-                <td>{{ account.name }}</td>
-                <td><a href="/accounts/{{ account.id }}/destroy" class="btn btn-danger">Delete</a></td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="list-group-item" v-if="newAccount">
+            <form>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" placeholder="Name" v-model="newAccount.name">
+                    </div>
 
-    <a href="/accounts/create" class="btn btn-primary" tabindex="1">New account</a>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Description" v-model="newAccount.description">
+                    </div>
+
+                    <div class="col-sm-3">
+                        <input type="submit" value="Save" class="btn btn-primary" v-on:click.prevent="save">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <a href="#" class="btn btn-primary" v-on:click="showNewForm" v-if="!newAccount">New account</a>
 </template>
 
 <script>
-export default {
-    data () {
-        return {
-            accounts: []
-        };
-    },
-    created () {
-        $.get('api/accounts').done(data => {
-            this.accounts = data;
-        });
-    }
-};
+    export default {
+        data () {
+            return {
+                accounts: [],
+                newAccount: null
+            };
+        },
+        created () {
+            $.get('api/accounts').done(data => {
+                this.accounts = data;
+            });
+        },
+        methods: {
+            showNewForm () {
+                this.newAccount = {};
+            },
+            save () {
+                console.log(this.newAccount);
+            }
+        }
+    };
 </script>
