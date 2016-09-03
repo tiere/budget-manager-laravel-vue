@@ -17,4 +17,14 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
-Route::resource('accounts', 'AccountController');
+Route::resource('accounts', 'AccountController', [
+    'names' => [
+        'index'   => 'account_api.index',
+        'create'  => 'account_api.create',
+        'store'   => 'account_api.store',
+        'show'    => 'account_api.show',
+        'edit'    => 'account_api.edit',
+        'update'  => 'account_api.update',
+        'destroy' => 'account_api.destroy',
+    ]
+]);
