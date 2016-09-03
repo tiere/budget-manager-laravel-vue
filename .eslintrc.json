@@ -10,6 +10,7 @@
     "ecmaVersion": 6,
     "sourceType" : "module"
   },
+  "plugins": ["vue"],
   "rules": {
     "array-bracket-spacing"         : [2, "never"],
     "block-spacing"                 : [2, "always"],
@@ -28,7 +29,7 @@
     "global-require"                : [2],
     "guard-for-in"                  : [2],
     "handle-callback-err"           : [2],
-    "indent"                        : [2, 2],
+    "indent"                        : [2, 4],
     "init-declarations"             : [2],
     "key-spacing"                   : [2, { "mode": "minimum" }],
     "keyword-spacing"               : [2],
