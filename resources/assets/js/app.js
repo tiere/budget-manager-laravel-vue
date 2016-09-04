@@ -15,11 +15,22 @@ require('./bootstrap');
 
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('accounts', require('./components/Accounts.vue'));
+Vue.component('account', require('./components/Account.vue'));
 
 const app = new Vue({
-    el: 'body'
+    el: 'body',
+    data () {
+        return {
+            showingAccount: false
+        };
+    },
+    events: {
+        'showing-account' (account) {
+            this.showingAccount = account;
+        }
+    }
 });
 
 setTimeout(function () {
-  $('.alert').slideUp();
+    $('.alert').slideUp();
 }, 3000);
