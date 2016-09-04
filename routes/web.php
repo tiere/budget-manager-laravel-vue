@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'AccountController@index');
 
 Route::resource('accounts', 'AccountController');
