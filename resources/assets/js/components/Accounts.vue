@@ -24,8 +24,8 @@
                     </div>
 
                     <div class="col-sm-3">
-                        <input type="submit" value="Save" class="btn btn-primary" v-on:click.prevent="save">
-                        <button class="btn btn-primary" v-on:click.prevent="cancelNew">Cancel</button>
+                        <input type="submit" value="Save" class="btn btn-success" v-on:click.prevent="save">
+                        <button class="btn btn-default" v-on:click.prevent="cancelNew">Cancel</button>
                     </div>
                 </div>
             </form>
