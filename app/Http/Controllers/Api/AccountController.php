@@ -28,4 +28,15 @@ class AccountController extends Controller
     {
         $account->delete();
     }
+
+    public function update(Request $request, Account $account)
+    {
+        $this->validate($request, [
+            'name' => "required|unique:accounts,name,{$account->id}",
+        ]);
+
+        $account->update($request->all());
+
+        return $account;
+    }
 }
