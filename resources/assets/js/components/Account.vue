@@ -6,11 +6,11 @@
     </div>
 
     <div id="accountNameRow" class="row">
-        <div class="col-sm-12" v-if="!editMode">
+        <div class="col-sm-12" v-show="!editMode">
             <h1 v-on:click="toggleEdit">{{ account.name }}</h1>
         </div>
 
-        <div class="form-group form-group-lg col-sm-5" v-bind:class="{ 'has-error': fieldErrors.name }" v-if="editMode">
+        <div class="form-group form-group-lg col-sm-5" v-bind:class="{ 'has-error': fieldErrors.name }" v-show="editMode">
             <label for="accountName">Name</label>
             <input id="accountName" type="text" class="form-control" v-model="account.name" @keyup.enter="save">
             <span class="help-block" v-if="fieldErrors">{{ fieldErrors.name }}</span>
@@ -72,6 +72,12 @@
             },
             toggleEdit (e) {
                 this.editMode = true;
+
+                Vue.nextTick(() => {
+                    $(e.target).closest('.row')
+                        .find('input')
+                        .focus();
+                });
             },
             cancelEditMode () {
                 this.editMode    = false;
