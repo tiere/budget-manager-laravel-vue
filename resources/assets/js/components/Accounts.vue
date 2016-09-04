@@ -4,8 +4,8 @@
     <div class="list-group">
         <a href="#" class="list-group-item" v-for="account in accounts" v-on:click.prevent="showAccount(account)">
             <div class="row">
-                <div class="col-sm-3">{{ account.name }}</div>
-                <div class="col-sm-6">{{ account.description }}</div>
+                <div class="col-sm-4">{{ account.name }}</div>
+                <div class="col-sm-5">{{ account.description }}</div>
                 <div class="col-sm-3">123 €</div>
             </div>
         </a>
@@ -13,12 +13,12 @@
         <div class="list-group-item" v-if="newAccount">
             <form>
                 <div class="row">
-                    <div class="col-sm-3" v-bind:class="{ 'has-error': fieldErrors.name }">
+                    <div class="col-sm-4" v-bind:class="{ 'has-error': fieldErrors.name }">
                         <input type="text" class="form-control" placeholder="Name" v-model="newAccount.name">
                         <span class="help-block" v-if="fieldErrors.name">{{ fieldErrors.name.join(' ') }}</span>
                     </div>
 
-                    <div class="col-sm-6" v-bind:class="{ 'has-error': fieldErrors.description }">
+                    <div class="col-sm-5" v-bind:class="{ 'has-error': fieldErrors.description }">
                         <input type="text" class="form-control" placeholder="Description" v-model="newAccount.description">
                         <span class="help-block" v-if="fieldErrors.description">{{ fieldErrors.description.join(' ') }}</span>
                     </div>
