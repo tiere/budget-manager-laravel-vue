@@ -23,13 +23,14 @@
 
                     <div class="col-sm-3">
                         <input type="submit" value="Save" class="btn btn-primary" v-on:click.prevent="save">
+                        <button class="btn btn-primary" v-on:click.prevent="cancelNew">Cancel</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 
-    <a href="#" class="btn btn-primary" v-on:click="showNewForm" v-if="!newAccount">New account</a>
+    <a href="#" class="btn btn-primary" v-on:click.prevent="showNewForm" v-if="!newAccount">New account</a>
 </template>
 
 <script>
@@ -52,6 +53,9 @@
                     this.newAccount = null;
                     this.fetchAccounts();
                 });
+            },
+            cancelNew () {
+                this.newAccount = null;
             },
             fetchAccounts () {
                 $.get('api/accounts').done(data => {
