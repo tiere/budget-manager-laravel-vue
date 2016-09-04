@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <accounts></accounts>
+    <account v-if="showingAccount" :account="showingAccount"></account>
+    <accounts v-else></accounts>
 @endsection
