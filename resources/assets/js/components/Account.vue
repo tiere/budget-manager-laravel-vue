@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-sm-12">
-          <button class="btn btn-default" v-on:click.prevent="backToAccounts">Back to accounts</button>
+            <button class="btn btn-default" v-on:click.prevent="backToAccounts">Back to accounts</button>
         </div>
     </div>
 
@@ -10,7 +10,7 @@
             <h1 v-on:click="toggleEdit">{{ account.name }}</h1>
         </div>
 
-        <div class="form-group form-group-lg col-sm-5" v-bind:class="{ 'has-error': fieldErrors.name }" v-show="editMode">
+        <div class="form-group form-group-lg col-sm-5 col-md-4 col-lg-3" v-bind:class="{ 'has-error': fieldErrors.name }" v-show="editMode">
             <label for="accountName">Name</label>
             <input id="accountName" type="text" class="form-control" v-model="account.name" @keyup.enter="save">
             <span class="help-block" v-if="fieldErrors">{{ fieldErrors.name }}</span>
@@ -22,7 +22,7 @@
             <p v-on:click="toggleEdit">{{ account.description }}</p>
         </div>
 
-        <div class="form-group col-sm-7" v-bind:class="{ 'has-error': fieldErrors.name }" v-show="editMode">
+        <div class="form-group col-sm-7 col-md-5 col-lg-4" v-bind:class="{ 'has-error': fieldErrors.name }" v-show="editMode">
             <label for="accountDescription">Description</label>
             <input id="accountDescription" type="text" class="form-control" v-model="account.description" @keyup.enter="save">
             <span class="help-block" v-if="fieldErrors">{{ fieldErrors.description }}</span>
