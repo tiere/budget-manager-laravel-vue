@@ -13,8 +13,9 @@
         <div class="list-group-item" v-if="newAccount">
             <form>
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" v-bind:class="{ 'has-error': fieldErrors.name }">
                         <input type="text" class="form-control" placeholder="Name" v-model="newAccount.name">
+                        <span class="help-block" v-if="fieldErrors.name">{{ fieldErrors.name.join(' ') }}</span>
                     </div>
 
                     <div class="col-sm-6">
@@ -38,7 +39,8 @@
         data () {
             return {
                 accounts: [],
-                newAccount: null
+                newAccount: null,
+                fieldErrors: []
             };
         },
         created () {
@@ -49,13 +51,21 @@
                 this.newAccount = {};
             },
             save () {
-                $.post('/api/accounts', this.newAccount).done(data => {
+                $.post('/api/accounts', this.newAccount)
+                .done(data => {
                     this.newAccount = null;
                     this.fetchAccounts();
+                })
+                .fail((xhr) => {
+                    switch (xhr.status) {
+                    case 422:
+                        this.fieldErrors = xhr.responseJSON;
+                    }
                 });
             },
             cancelNew () {
                 this.newAccount = null;
+                this.fieldErrors = [];
             },
             fetchAccounts () {
                 $.get('api/accounts').done(data => {
