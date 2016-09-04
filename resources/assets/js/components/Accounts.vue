@@ -2,7 +2,7 @@
     <h1>Accounts</h1>
 
     <div class="list-group">
-        <a href="#" class="list-group-item" v-for="account in accounts">
+        <a href="#" class="list-group-item" v-for="account in accounts" v-on:click.prevent="showAccount(account)">
             <div class="row">
                 <div class="col-sm-3">{{ account.name }}</div>
                 <div class="col-sm-6">{{ account.description }}</div>
@@ -67,6 +67,9 @@
             cancelNew () {
                 this.newAccount = null;
                 this.fieldErrors = [];
+            },
+            showAccount (account) {
+                this.$dispatch('showing-account', account);
             },
             fetchAccounts () {
                 $.get('api/accounts').done(data => {
