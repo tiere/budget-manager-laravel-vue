@@ -23,4 +23,9 @@ class AccountController extends Controller
 
         return Account::create($request->all());
     }
+
+    public function destroy(Account $account)
+    {
+        $account->delete();
+    }
 }
