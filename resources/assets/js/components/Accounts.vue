@@ -5,8 +5,8 @@
         <a href="#" class="list-group-item" v-for="account in accounts" v-on:click.prevent="showAccount(account)">
             <div class="row">
                 <div class="col-sm-4">{{ account.name }}</div>
-                <div class="col-sm-5">{{ account.description }}</div>
-                <div class="col-sm-3">123 €</div>
+                <div class="col-sm-6">{{ account.description }}</div>
+                <div class="col-sm-2">123 €</div>
             </div>
         </a>
 
@@ -18,12 +18,12 @@
                         <span class="help-block" v-if="fieldErrors.name">{{ fieldErrors.name.join(' ') }}</span>
                     </div>
 
-                    <div class="col-sm-5" v-bind:class="{ 'has-error': fieldErrors.description }">
+                    <div class="col-sm-6" v-bind:class="{ 'has-error': fieldErrors.description }">
                         <input type="text" class="form-control" placeholder="Description" v-model="newAccount.description">
                         <span class="help-block" v-if="fieldErrors.description">{{ fieldErrors.description.join(' ') }}</span>
                     </div>
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <input type="submit" value="Save" class="btn btn-success" v-on:click.prevent="save">
                         <button class="btn btn-default" v-on:click.prevent="cancelNew">Cancel</button>
                     </div>

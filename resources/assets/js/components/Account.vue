@@ -17,6 +17,18 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-sm-12" v-show="!editMode">
+            <p v-on:click="toggleEdit">{{ account.description }}</p>
+        </div>
+
+        <div class="form-group col-sm-7" v-bind:class="{ 'has-error': fieldErrors.name }" v-show="editMode">
+            <label for="accountDescription">Description</label>
+            <input id="accountDescription" type="text" class="form-control" v-model="account.description" @keyup.enter="save">
+            <span class="help-block" v-if="fieldErrors">{{ fieldErrors.description }}</span>
+        </div>
+    </div>
+
     <div class="row" v-if="!editMode">
         <div class="col-sm-12">
             <button class="btn btn-danger" v-on:click="deleteAccount(false)" v-if="!confirmDeletion">Delete</button>
